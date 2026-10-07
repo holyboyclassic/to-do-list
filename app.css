@@ -1,0 +1,297 @@
+:root {
+        --bg: #f4f7fb;
+        --card: #ffffff;
+        --primary: #4f46e5;
+        --primary-dark: #3730a3;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --border: #e5e7eb;
+        --soft: #f9fafb;
+        --success: #10b981;
+        --danger: #ef4444;
+        --shadow: 0 18px 45px rgba(79, 70, 229, 0.12);
+      }
+
+      body.dark {
+        --bg: #0f172a;
+        --card: #111827;
+        --primary: #8b5cf6;
+        --primary-dark: #c4b5fd;
+        --text: #e5e7eb;
+        --muted: #9ca3af;
+        --border: #2f3b52;
+        --soft: #1f2937;
+        --success: #34d399;
+        --danger: #f87171;
+        --shadow: 0 18px 45px rgba(15, 23, 42, 0.6);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #eef2ff, #f8fafc);
+        color: var(--text);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 24px;
+        transition: background 0.2s ease, color 0.2s ease;
+      }
+
+      body.dark {
+        background: linear-gradient(135deg, #020817, #111827);
+      }
+
+      .app {
+        width: 100%;
+        max-width: 620px;
+        background: var(--card);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 28px 22px 18px;
+      }
+
+      .app-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        color: var(--primary-dark);
+      }
+
+      #themeToggle {
+        border: 1px solid var(--border);
+        background: var(--soft);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+        font-weight: 700;
+      }
+
+      .input-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 18px;
+        flex-wrap: wrap;
+      }
+
+      #taskInput,
+      #taskDate {
+        padding: 14px 16px;
+        border: 1.5px solid var(--border);
+        border-radius: 12px;
+        font-size: 1rem;
+        outline: none;
+        background: transparent;
+        color: var(--text);
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      #taskInput {
+        flex: 1 1 180px;
+      }
+
+      #taskDate {
+        min-width: 160px;
+      }
+
+      #taskInput:focus,
+      #taskDate:focus,
+      .task-date-input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+      }
+
+      #addBtn,
+      .delete-btn,
+      .edit-btn {
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.15s ease, opacity 0.2s ease;
+      }
+
+      #addBtn {
+        background: var(--primary);
+        color: white;
+        font-weight: 700;
+        padding: 0 18px;
+        min-width: 90px;
+      }
+
+      #addBtn:hover,
+      .delete-btn:hover,
+      .edit-btn:hover,
+      .task-item:hover {
+        transform: translateY(-1px);
+      }
+
+      .task-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .task-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: var(--soft);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 14px;
+        transition: all 0.2s ease;
+      }
+
+      .task-item.completed {
+        opacity: 0.75;
+      }
+
+      .task-item.dragging {
+        opacity: 0.5;
+      }
+
+      .task-item.drop-target {
+        border-color: var(--primary);
+        box-shadow: inset 0 0 0 1px var(--primary);
+      }
+
+      .task-main {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 0;
+      }
+
+      .task-checkbox {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--success);
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .task-text-wrap {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .task-text {
+        font-size: 1rem;
+        word-break: break-word;
+      }
+
+      .task-item.completed .task-text {
+        text-decoration: line-through;
+        color: var(--muted);
+      }
+
+      .task-date-label {
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .task-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .task-date-input {
+        width: 150px;
+        padding: 8px 10px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: transparent;
+        color: var(--text);
+      }
+
+      .edit-btn {
+        background: rgba(79, 70, 229, 0.12);
+        color: var(--primary);
+        font-weight: 700;
+        padding: 8px 10px;
+      }
+
+      .delete-btn {
+        background: rgba(239, 68, 68, 0.12);
+        color: var(--danger);
+        font-weight: 700;
+        padding: 8px 10px;
+      }
+
+      .empty-state {
+        text-align: center;
+        color: var(--muted);
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        padding: 22px 16px;
+        background: var(--soft);
+      }
+
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+
+      .clear-btn {
+        border: none;
+        background: transparent;
+        color: var(--primary);
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      @media (max-width: 600px) {
+        .app {
+          padding: 20px 16px 14px;
+        }
+
+        .task-item {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .task-actions {
+          justify-content: space-between;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .input-row {
+          flex-direction: column;
+        }
+
+        #taskDate,
+        .task-date-input {
+          width: 100%;
+        }
+
+        #addBtn {
+          min-height: 48px;
+        }
+      }
