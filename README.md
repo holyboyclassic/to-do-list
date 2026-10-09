@@ -35,7 +35,7 @@ Through this project, I practised:
 
 ##  Live Demo
 
-to-do-list-tawny-tau-20.vercel.app.
+to-do-list-tawny-tau-20.vercel.app
 
 ##  Developer
 holyboyclassic
